@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h2>Achievement Detail</h2>
+  <p><strong>Title:</strong> {{ achievement.title }}</p>
+  <p><strong>Points:</strong> {{ achievement.points }}</p> 
+  <p><strong>Description:</strong> {{ achievement.description }}</p>
+  <p><strong>Date Achieved:</strong> {{ achievement.date_achieved }}</p>
+
+  {% if user.is_authenticated and user == achievement.user %}
+    <a href="{% url 'update-achievement' pk=achievement.pk %}" class="btn btn-primary">Update</a>
+    <a href="{% url 'delete-achievement' pk=achievement.pk %}" class="btn btn-danger">Delete Achievement</a>
+  {% endif %}
+  
+{% endblock %}

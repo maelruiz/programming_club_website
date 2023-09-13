@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h2>Delete Achievement</h2>
+  <p>Are you sure you want to delete this achievement?</p>
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'list-achievement' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}
